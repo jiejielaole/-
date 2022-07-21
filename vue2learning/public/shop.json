@@ -1,0 +1,31 @@
+{
+  "list": [
+    {
+      "id": 1,
+      "ch": false,
+      "name": "华为mate30",
+      "price": 4566
+    },
+    {
+      "id": 2,
+      "ch": false,
+      "name": "华为mate40",
+      "price": 4166
+
+    },
+    {
+      "id": 3,
+      "ch": false,
+      "name": "苹果X",
+      "price": 5200
+
+    },
+    {
+      "id": 4,
+      "ch": false,
+      "name": "OPPO",
+      "price": 2180
+
+    }
+  ]
+}

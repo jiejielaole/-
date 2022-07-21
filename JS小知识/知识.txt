@@ -1,0 +1,865 @@
+一.JS组成部分：BOM(brower object model) DOM(document object model) ECMAScript
+
+二.JS数组常用方法
+1.push(): 将数据追加到数组末尾 语法：数组.push('') 返回值:添加后数组长度
+2.pop():删除数组最后一项的数据  语法:数组.pop() 返回值:删除的数据
+3.unshift():将数据添加到数组的最前 语法:数组.unshift(数据) 返回值:添加数据后数组的长度
+4.shift():删除数组最前面的一个数据 语法:数组.shift() 返回值:删除的数据
+5.reverse():将数组反转 语法:数组.reverse() 返回值:反转后的数组
+6.splice():删除数组中若干数据，并选择是否插入新的数据 语法:数组.splice(开始索引，多少个，要插入的数据) 返回值:以新数组的形式返回被删除的数据
+7.sort():将数组进行排序 语法:数组.sort():按照位排序,数组.sort(function(a,b){return a-b}):按照从小到大升序排列,数组.sort(function(a,b){return b-a}):按照从大到小降序排列 返回值:排序好的数组
+8.join():将数组用连接符连接成为一个字符串 语法:数组.join(连接符) 返回值:连接好的字符串
+9.concat():将其他数组和数组拼接在一起 语法:数组.concat(其他数组) 返回值:拼接好的新数组 注:(原始数组不变化)
+10.slice():截取数组中的某些数据 语法:数组.slice(开始索引：默认0，结束索引：默认数组长度) 返回值：以新数组的形式返回截取出来的数据 注：(索引设为1，3：遵循包前不包后原则，包含索引1数据，不包含索引3数据)
+11.indexOf():查找数据在数组中的索引位置 语法:数组.indexOf(数据) 返回值：有该数据，返回第一次出现的索引位置 注：(没有查找的数据返回-1)
+12.forEach():遍历数组 语法：数组.forEach(function(item：数组的每一项,index：数组索引,arr：原始数组){}) 返回值：无 注：(数组有多长，循环多少次)
+13.map():映射数组 语法:数组.map(function(item：数组的每一项,index：数组索引,arr：原始数组){}) 返回值：映射后的新数组
+14.filter():过滤数组 语法:数组.filter(item：数组的每一项,index：数组索引,arr：原始数组){}) 返回值：过滤好的新数组 注(过滤的条件用return的方式书写)
+15.every():判断数组是不是每一项都满足条件 语法:数组.every(item：数组的每一项,index：数组索引,arr：原始数组){}) 返回值：一个布尔值
+16.some():判断数组是不是有某一项满足条件 语法:数组.some(item：数组的每一项,index：数组索引,arr：原始数组){}) 返回值：一个布尔值
+
+三.字符串常用方法
+1.charAt():获取对应索引位置的字符 语法：字符串.charAt(索引) 返回值：对应索引位置的字符
+2.toLowerCase():将字符串内的字母全部转换成小写 语法:字符串.toLowerCase() 返回值：转换好的字符串
+3.toUpperCase():将字符串内的字母全部转换成大写 语法:字符串.toUpperCase() 返回值：转换好的字符串
+4.replace():将字符串内第一个满足换下内容的片段替换成换上内容 语法：字符串.replace(换下内容，换上内容) 返回值：替换好的字符串
+5.trim():去除字符串首尾的空格 语法：字符串.trim() 返回值:去除空格后的字符串
+6.split():按照分隔符将字符串切割成为一个数组 语法：字符串.split(分隔符) 返回值：切割后的数组
+7.substr()subs:截取字符串 语法：字符串.substr(开始索引，多少个) 返回值：截取出来的字符串
+8.substring():截取字符串 语法：字符串.substring(开始索引，结束索引) 返回值：截取出来的字符串 注：substring：除了两个参数会比较大小调换位置外，还满足小于0时按0处理的规则；
+9.slice():截取字符串 语法：字符串.slice(开始索引，结束索引) 返回值：截取出来的字符串 注：slice：则不会有这样的规则，只遵循大于0，从前面计数，小于0，从后面计数的原则。
+注：所有方法都不改变原始字符串。
+
+四.数字常用方法
+1.random():Math.random() 产生一个[0，1)的随机数
+2.round():Math.round(数字) 对数字进行四舍五入
+3.ceil():Math.ceil 对数字进行向上取整
+4.floor():Math.floor 对数字进行向下取整 
+5.pow():Math.pow(底数，指数) 对底数进行幂运算
+6.sqrt():Math.sqrt(数字) 对数字进行二次方根运算，只保留正数部分
+7.abs():Math.abs(数字) 对数字进行绝对值运算
+8，9.max/min():Math.max/min(数字1，数字2，...) 获取传入数字中的最大值/最小值
+
+BOM操作:
+1.window.innerWidth:获取浏览器可视窗口的宽度
+window.innerHeight:获取浏览器可视窗口的高度
+2.浏览器的弹出层
+提示框：window.alert('提示信息')
+询问框：window.confirm('提示信息')
+输入框：window.prompt('提示信息')
+3.开启和关闭标签页
+开启：window.open('地址')
+关闭：window.close()
+4.浏览器常见事件
+资源加载完毕：window.onload = function(){}
+可视尺寸改变：window.onresize = function(){}
+滚动条位置改变：window.onscroll = function(){}
+5.浏览器的历史记录操作
+回退页面：window.history.back()
+前进页面：window.history.forward()
+6.浏览器卷去的尺寸
+卷去的高度：document.documentElement.scrollTop || document.body.scrollTop
+卷去的宽度：document.documentElement.scrollLeft || document.body.scrolllLeft
+7.浏览器滚动到
+参数方式1：window.scrollTo(left,top) 瞬间定位
+left:浏览器卷去的宽度；top：浏览器卷去的高度
+参数方式2：window.scrollTo({
+  left:xx,
+  top:yy,
+  behavior:'smooth';
+})  滚动条平滑滚动到指定位置
+
+定时器
+1.间隔定时器 
+语法：setInterval(函数，时间) 函数：每次要执行的内容  时间；单位是毫秒
+2.延时定时器
+语法：setTimeout(函数，时间) 函数：时间到达执行的内容  时间；单位是毫秒
+返回值不区别定时器种类，只表示是页面中的第几个定时器
+
+DOM操作
+根据id获取元素：document.getElementById('元素id')
+根据元素类名获取：document.getElementsByClassName('元素类名')
+根据标签名获取：document.getElementsByTagName('标签名')
+根据选择器获取一个：document.querySelector('选择器') 获取第一次有选择器的元素
+根据选择器获取一组：document.querySelectorall('选择器')
+
+操作元素文本内容：获取：元素.innerText 设置：元素.innerText = '新内容'
+操作元素超文本内容：获取：元素.innerHTML 设置：元素.innerHTML = '新内容'
+
+获取元素尺寸
+元素.offsetHeight/元素.offsetWidth  获取content+padding+border区域的尺寸
+元素.clientHeight/元素.clientWidth  获取content+padding区域的尺寸
+
+阻止事件传播
+事件对象.stopPropagation()
+事件委托
+事件对象.target.tagName==='LI'
+
+原型prototype：每一个函数天生自带一个属性，叫做prototype,是一个对象
+
+ES6语法
+1.定义之前使用let，const变量会报错，var会解析，返回undefined
+2.var可重复变量名，let,const不行
+3.块级作用域：任何一个可以执行代码段的{}都会限制该变量使用范围
+let,const有块级作用域，var没有
+
+let定义时可以不赋值，而const必须赋值
+const定义的值不能修改，let可以
+
+普通函数有arguments，箭头函数没有
+
+内部作用域：箭头函数没有this。function有this。
+
+解构赋值：
+数组： var [a,b] = ['舒服撒','asdad']
+对象：var obj={name:'Jack',age:18} ; var {name,age} = obj   var{age:a} = obj (表示定义一个a变量从obj中获取age的值)
+
+
+模板字符串：
+var age = 18
+var str = `aaaa${age}`  可换行，可用${age}直接解析变量
+
+展开运算符...
+作用：展开数组的[]或展开对象的{}
+
+作用1：合并数组
+var arr1 = [1,2]
+var arr2 = [3,4]
+var arr3 = [...arr1,...arr2]
+
+作用2：给函数传递参数
+var arr1 = [10,20,17,7]
+var maxvalue = Math.max(...arr1)
+
+展开对象
+var obj = {name:'Jack',age:18}
+作用1：用来复制对象
+var obj2 = {
+  gender:'男',
+  ...obj
+}
+注意：展开书写的顺序问题，同key后写的覆盖先写的。
+
+类语法
+class 类名 {
+  constructor(name,age){
+    this.name = name
+    this.age = age
+  }
+  方法名 () {
+    ...
+  }
+  //静态属性书写
+  static a = 100
+  //静态方法
+  static go(){...}
+}
+
+var obj = new 类名  注意：必须和new连用，不然会报错。
+
+Ajax
+1.创建ajax对象 var xhr = new XMLHttpRequest()
+2.配置本次请求信息 xhr.open(请求方式，请求地址，是否异步) true：异步请求；false：同步请求
+3.注册请求完成事件 xhr.onload = function () {}
+//如何拿到后端返回的信息
+xhr.responseText
+4.把请求发送出去 xhr.send()
+
+当后端返回的时json格式字符串的时候，需要进行单独解析
+var res = JSON.parse(json格式字符串)
+
+注意：发送POST请求，并且需要携带参数时，要进行特殊说明
+语法：xhr.setRequestHeader('content-type',你传递的参数格式)
+
+阻止表单的默认提交行为
+e.preventDefault()
+
+JQuery选择器
+<script type="text/javascript">
+		//注意：不管使用任何选择器，获取到的元素都是一个元素集合
+	
+		//id 选择器
+		console.log($('#box'))
+		// 类名选择器
+		console.log($('.a'))
+		//标签名选择器
+		console.log($('li'))
+		//结构选择器
+		console.log($('li:nth-child(odd)'))  //获取所有奇数个li
+	</script>
+
+JQuery常用筛选器
+1.first(): $('li').first() 筛选出所有li中的第一个
+2.last():  $('li').last() 筛选出所有li中的最后一个
+3.eq(索引)：$('li').eq(3) 注意:索引从0开始，依次+1
+4.next(): $('span').next() 筛选出span标签后的一个元素
+5.nextAll():  $('span').nextAll() 筛选出span标签后的所有元素
+6.prev:$('span').prev() 筛选出span标签前的一个元素
+7.prevAll:$('span').prevALL() 筛选出span标签前的所有元素
+8.parent；$('span').parent() 筛选出span标签的父元素
+9.parent；$('span').parents() 筛选出span标签的所有父级结构  注意：逐层获取，直到html标签为止
+10.siblings：$('span').siblings() 筛选出该元素所有的兄弟元素
+11.find(选择器): $('ul').find('.a') 筛选出该元素的所有后代元素中，满足选择器要求的元素
+
+JQuery操作文本内容
+1.html()
+获取： $('div').html()
+设置： $('div').html('<h2>我是后来设置的内容</h2>')  注意：可以识别并解析html结构字符串
+2.text()
+获取： $('div').text()
+设置：$('div').text('我是后来设置的内容') 注意：不可以识别并解析html结构字符串
+3.val()
+获取：$('input').val()  主要用于form
+设置：$('input').val(你要设置的内容) 用来设置该表单元素的value值
+
+
+JQuery操作类名
+1.addClass():
+$('div').addClass('new') 给标签添加类名
+2.remoceClass():
+$('div').remoceClass('old') 删除标签指定类名
+3.toggleClass():
+$('div').toggleClass('class')  切换类名(即如果本身有这个类名就删除，否则添加)
+
+
+JQeury操作元素样式
+css()
+1.css获取样式  注意：可以获取到元素的行内样式，也可以获取元素的非行内样式
+语法：元素集合.css(你要获取的样式名称)
+返回值：该样式的样式值
+$('div').css('width')
+2.css设置样式
+语法：元素集合.css(样式名，样式值)
+$('div').css('width','300px')  注意：当你需要给一个元素设置样式值为px单位的时候，可以省略单位不写
+
+3.css批量设置样式
+语法：元素集合.css({你所有需要设置的样式})
+$('div').css({
+  width：'300px',
+  height：'600px',
+  opacity:0.5
+  })
+
+
+
+JQuery操作属性
+1.attr(): 可以进行设置和获取元素的属性，一般用于操作元素的自定义属性；attr操作的所有属性都会直接出现在元素的标签身上
+获取：$('div').attr('hello') 获取div上hello属性的值
+设置： $('div').attr('a',100)
+2.removeAttr(): 对元素的属性进行删除操作
+$('div').removeAttr('hello')
+3.prop(): 可以获取和设置元素的属性，
+注意1：当prop设置元素的原生属性时，会直接响应在元素的标签身上；当prop设置元素自定义属性时
+不会响应在元素标签身上，会响应在元素对象身上。
+注意2：prop方法不能获取元素标签身上的自定义属性，只能获取到prop方法自己设置的自定义属性
+$('div').prop('id','aaa')
+4.removeProp(): 用来删除元素属性的方法
+注意：不能删除原生属性，只能删除由prop方法设置的自定义属性
+$('div').removeProp('a')
+
+
+JQuery 获取元素尺寸
+1.width():
+height():
+获取到的就是元素内容区域的尺寸
+2.innerWidth()：
+innerHeight():
+包含padding
+3.outerWidth()：
+outerHeight():
+包含padding和border
+
+注意：1.不管元素是否隐藏，都能获取到该元素的值
+2.不管盒子模型是什么状态，拿到的尺寸区域不变
+
+
+JQuery操作元素偏移量
+1.offset(): 获取元素相对于页面左上角的坐标位置
+注意：返回值是一个对象数据类型,{top:yyy,left:xxx}
+$('div').offset()
+2.position() 获取的就是元素的定位位置
+注意：如果你设置的是right和bottom，会自动帮你换算成top和left的值给到你
+$('div').position()
+
+
+JQuery事件绑定
+1.on():
+1-1:基础绑定事件
+语法：元素集合.on('事件类型'，事件处理函数)
+$('div').on('click',function(){})
+1-2:事件委托绑定事件
+语法：元素集合.on('事件类型'，选择器，事件处理函数)
+$('div').on('click','span'，function(){})
+1-3：批量绑定事件
+语法：元素集合.on({事件类型1：处理函数，事件类型2：处理函数，...})
+注意：不能进行事件委托了
+$('div').on({
+  click:function(){点击事件},
+  mouseover:function(){鼠标移入事件},
+  mouseout:function(){鼠标移出事件}
+})
+
+2.one() 用来绑定事件，和on方法绑定事件的方式一样
+区别：one方法绑定的事件，只能执行一次
+
+3.hover()
+注意：jQuery里面一个特殊的事件
+语法：元素
+集合.hover(移入时触发的函数，移出时触发的函数)  当你只传入一个函数时，会在移入移出都触发
+
+4.常用事件函数
+jQuery 把我们最常用到的一些事件，单独做成了事件函数
+我们通过调用这些事件函数，来达到绑定事件的效果
+如：click(),mouseout(),mouseover()，change()
+$('div').click(事件处理函数)
+
+
+事件的解绑和触发
+1.off() 事件解绑
+1-1 解绑所有事件处理函数
+语法：元素集合.off(事件类型)
+$('div').off('click')  会把div的click事件对应的所有事件处理函数全部移除
+1-2 解绑指定的事件处理函数
+语法：元素集合.off(事件类型，要解绑的事件处理函数)
+$('div').off('click'，'函数名')
+
+2.trigger() 事件触发
+使用代码的方式，来触发事件
+语法：元素集合.trigger(事件类型)
+$('div').trigger(click)
+
+jQuery的基本动画
+1.show():显示
+2.hide():隐藏
+3.toggle():切换
+对于以上三个运动函数，有共同的参数
+=>第一个表示运动时间(单位ms)
+=>第二个表示运动曲线 linear(匀速),swing(缓动)
+=>第三个表示运动结束的回调函数
+
+折叠动画函数
+1.slideDown() 显示
+2.slideUp() 隐藏
+3.slideToggle() 切换
+
+渐隐渐显动画
+1.fadeIn(): 显示
+2.fadeOut(): 隐藏
+3.fadeToggle(): 切换
+4.fadeTo(运动时间，指定的透明度，运动曲线，运动结束的回调函数): 
+
+综合动画函数
+animate()
+第一个参数：要运动的样式，以一个对象数据类型传递
+第二个参数：运动时间(单位ms)
+第三个参数：运动曲线 linear(匀速),swing(缓动)
+第四个参数：运动结束的回调函数
+注意：关于颜色、transform相关的样式不能运动
+$('div').animate({width:'200px'},1000,linear,function(){})
+
+
+结束动画函数
+1.stop():
+ 当任何一个元素，执行了stop方法以后，会立即结束当前的所有运动状态，目前运动到什么位置，就停留在什么位置
+一般对于结束动画的时候，都是在运动开始之前
+$('div').stop().toggle(2000):每一次触发的时候，都会把之前的动画停止下来，执行本次最新的动画
+2.finish():
+当任何一个元素执行了finish方法以后，会立即结束当前的所有运动，直接去到动画的结束位置
+
+
+jQuery的ajax 请求
+注意：因为发送ajax请求，不是操作DOM
+不需要依赖选择器去获取到元素
+他的使用，是直接以来jQuery或者$变量来使用
+语法：$.ajax({本次发送ajax的配置项})
+配置项：
+1.url：必填，表示请求地址
+2.method:选填，默认是GET,表示请求方式
+3.data:选填，默认是''，表示携带给后端的参数
+4.async：选填，默认是true，表示是否异步
+5.seccess：选填，表示请求成功的回调函数
+6.error“：选填，表示请求失败的回调函数
+
+$.ajax({
+  url:'网址',
+  success:function(res){
+    //res 接受的就是后端给回的响应结果
+    console.log(res)
+  }
+})
+
+$.ajax({
+  url:'网址',
+  method:'POST',
+  data:{name:'前端小灰狼',age:18}
+  success:function(res){
+    //res 接受的就是后端给回的响应结果
+    console.log(res)
+  }
+})
+
+$("form").serialize() 序列化数据
+new FormData($('#uploadForm')[0]) 可以序列化文件
+
+
+登陆成功：
+window.localStorage.setItem('token',res.token) 把登录过的'凭证'存储起来， 为其他页面使用
+window.localStorage.setItem('id',res.user.id) 把用户id存储起来
+直接跳转：window.location.href = '...'
+
+获取localStorage内容
+const token = wuindow.localStorage.getItem('token') 
+
+
+
+Node.js 
+
+npx http-server 打开一个html
+
+process.env.npm_package_config_env 获取package.json中的自定义字段
+
+页面render
+--SSR(Server Side Render)
+--CSR(Client Side Render)
+
+
+Vuejs
+
+template:就是一个包装元素，不会真正创建在页面上。
+
+事件修饰符
+@click.stop='function'  阻止冒泡
+@click.self='function'  只触发自己的点击事件，不会因冒泡而触发
+@click.once='function'   只触发一次
+@click.prevent   阻止默认行为       
+
+按键修饰符
+@keyup(键盘事件)是按键松开，当指定的按键松开会触发的事件
+@keyup.enter='function' 按下enter键触发
+
+表单修饰符
+v-model.lazy 懒加载
+v-model.number 将内容修饰成数字类型
+v-model.trim  去首尾空格
+
+计算属性：重视结果,(防止模板过重，难以维护)，负责逻辑放在计算属性中来写。(ajax不好用了)
+//计算的;必须有return，只求结果，有缓存，同步。
+computed:{
+
+}
+
+监听：(重视过程)监听一个值的改变，不用返回值，异步同步
+watch:{
+  mytext(newval){
+    console.log('aaa')
+  }
+}
+
+:src="item.img | imgFliter"
+
+|即将原始数据送入过滤器imgFliter      Vue3 过滤器不支持
+Vue.filter('imgFliter',(url)=>{})
+
+父传子：
+props:{
+  myname:{
+    type:String,
+    default:""
+  }
+  maringht:{
+    type:Boolean,
+    default:true
+  }
+
+}                             属性验证，默认属性
+
+1.中央事件总线 bus  (订阅发布模式)
+
+2.vuex 状态管理
+
+
+动态组件
+<component :is='which'></component>
+
+<keep-alive>保持状态</keep-alive> 离开后，组件不会被销毁，避免重新渲染
+
+旧插槽：
+<slot></slot>  单个插槽(内容分发)
+<div slot='a'>111111111111</div>
+<slot name='a'></slot> 具名插槽  作用：扩展组件能力，提高组件的复用性
+新插槽：
+<template v-slot:a>
+  <div>1111111111</div>     v-slot:a相当于#a
+</template>
+
+过渡效果
+<transition enter-active-class="ssssss";leave-active-class="lllll"></transition>
+
+样式效果后缀加上-active-class和-leave-class
+<transition enter-active-class="ssssss";leave-active-class="lllll"></transition>
+可以改成
+<transition name = '前面的自定义样式名'></transition>
+
+appear属性，表示出场动画
+
+相同标签要 :key 
+
+mode="in-out":
+in-out:先来再走
+out-in:先走再来
+
+列表过渡
+<transition-group></transition-group> 会实例化一个span标签
+tag="标签"  选择实例化的标签类型
+
+生命周期函数
+1.创建阶段
+beforeCreate()  初始化事件和生命周期
+created()  初始化注入和响应式(状态初始化或者挂载到当前实例的一些属性)
+
+beforeMount()  挂载之前，模板解析之前最后一次修改模板节点
+mounted()  拿到真实的dom节点,document.getElementById('box').innerHTML
+依赖于dom创建之后，才进行初始化工作的插件 （轮播插件）
+订阅 bus.$on
+ajax
+
+2.更新阶段
+beforeUpdate() 更新之前，记录老的dom某些状态，比如滚动条位置记录
+updated()  更新完成，获取更新后的dom，(才进行swiper工作的插件)
+
+3.销毁阶段 vue2
+beforeDestroy(){
+  clearInterval(this.id)
+}  清除定时器，事件解绑
+
+destroyed()
+
+
+vue3时，
+beforeUnmount()
+unmounted()
+
+指令： 
+
+this.$nextTick(()=>{
+  我比updated执行的都晚，而且只执行一次
+})
+
+@别名，永远指向src的绝对路径
+
+lintOnSave: false,  暂时关闭代码格式检测
+
+
+
+    axios.get("/api/mmdb/movie/v3/list/hot.json?ct=%E4%B8%8A%E8%99%9E&ci=456&channelId=4")
+     .then(res => {
+       console.log(res.data)
+     })
+    axios.get("/jiejie/api/mmdb/movie/v3/list/hot.json?ct=%E4%B8%8A%E8%99%9E&ci=456&channelId=4")
+    .then(res => {
+      console.log(res.data.data.hot[0].nm)
+      this.myname = res.data.data.hot[0].nm
+    })
+配置proxy代理：
+ devServer: {
+    proxy: {
+       "/api": {
+         target: "https://i.maoyan.com",
+         changeOrigin: true
+       },
+      "/jiejie": {
+        target: "https://i.maoyan.com",
+        changeOrigin: true,
+        pathRewrite: {
+          '^/jiejie': ''
+        }
+      }
+    }
+  }
+
+alias别名配置
+comfigureWebpack: {
+  resolve: {
+    alias: {
+      'assets':'@/assets'
+    }
+  }
+  
+}
+编程式导航
+this.$router.push('/detail')
+
+声明式导航
+<router-link></router-link>
+
+动态路由
+/path：'/detail/:myid'  // 动态二级路由
+
+this.$route.params.id  获取id
+this.$router.back() 返回上一页
+
+路由拦截
+1.全局拦截
+router.beforeEach((to, from, next) => {
+  console.log(to)
+  if(to.meta.isRequired) {
+    // 判断 本地存储中是否有token
+    if (localStorage.getItem('token')) {
+      
+      next()
+    } else {
+      next('/login')
+    }
+  } else {
+    next()
+  }
+  
+})
+在需要拦截的路由的配置表中，加上meta:{isRequired:true}属性
+
+吸顶效果
+mounted() {
+  windoe.onscroll = () => {
+    if(document.documentElement.scrollTop > 50) {
+      
+    } else {
+
+    }
+  }
+}
+必须配合destroyed () {
+  window.onscroll = null
+}
+
+指令吸顶效果
+el:是dom结构，binding是传值 (v-scroll="50")
+Vue.directive('scroll',{
+  inserted(el,binding) {
+    el.style.display = 'none'
+
+    window.onscroll = () => {
+      if((document.documentElement.scrollTop || document.body.scrollTop) > binding.value) {
+         el.style.display = ' black'
+      } else {
+        el.style.display = 'none'
+      }
+     
+    }
+  },
+  //   销毁执行的
+  unbind () {
+    window.onscroll = null
+  }
+})
+
+性能优化
+1.betterScroll
+
+<div class="box" :style="{
+  height:height  //js中定义的变量
+}">
+    <ul>
+      <li></li>
+    </ul>
+</div>
+
+.box {
+  // height:400px;
+  overflow:hidden;
+  position:relative;  // 修改滚动条的位置
+}
+导入:import BetterScroll from 'better-scroll'
+安装:cnpm i --save better-scroll
+
+初始化:axios取到数据后做操作
+new BetterScroll('.box',{
+    scrollbar: {
+      fade:true
+    }
+})
+
+//动态计算height
+this.height = document.documentElement.clientHeight - document.querySelector("footer").offsetHeight + 'px'
+
+axios拦截器
+// 在发请求之前拦截 -- showloading
+axios.interceptors.request.use((config) => {
+  return config
+},(err) => {
+  return Promise.reject(error)
+})
+
+// 在成功后拦截 -- hideLoading
+axios.interceptors.response.use((response) => {
+  return {
+    ...response,
+    ...
+  }
+},(err) => {
+  return Promise.reject(error)
+})
+
+vue-x 状态管理模式
+export default new Vuex.Store({
+  // state公共状态
+  state: {
+    name: 'jiejielaole'
+  },
+  getters: {},
+  //统一管理，被devtools记录状态的修改，只能支持同步
+  mutations: {
+    changename(state, name) {
+      console.log(name)
+      this.state.name = name
+    }
+  },
+  // 支持异步和同步
+  actions: {
+
+  },
+  modules: {}
+})
+this.$store.commit("changename", "lala");
+
+vuex的异步引入
+
+
+if(通过存储数据的长度判断需不需要分发){
+  this.$store.dispatch('aaa').then //分发
+  (res => {
+    console.log('数据完事了')
+  })
+}
+
+vuex第二种写法
+import {mapState} from 'vuex'
+
+c computed: {
+    ...mapState(['nnnn','name'])
+  },
+  mounted() {
+    // this.$store.dispatch("getname", this.name1).then(res => {
+    //   console.log(res);
+    //   console.log("完事了");
+      console.log(this.name)
+    // });
+  },
+
+  methods:{
+    ...mapActions(['...aaa']),
+    之后this.$store.dispatch('aaa')可改成this.aaa()
+  }
+
+vuex控制底部选项卡
+state加属性isTabbar:true
+想要显示的界面：
+mounted() {
+  this.$store.commit('hide')
+}
+destroyed() {
+  this.$store.commit('show')
+}
+show方法显示，hide方法隐藏
+
+mixin(混入)
+
+var obj = {
+  created() {
+  this.$store.commit('hide')
+}
+destroyed() {
+  this.$store.commit('show')
+}
+}
+
+然后再script里加入mixins:[obj]
+
+vuex持久化
+cnpm i --save vuex-persistedstate
+
+
+import createPersistedState from "vuex-persistedstate";
+
+plugins: [createPersistedState({
+  reducer(val) {
+    return {
+      //只存储state中的user
+      user:val.user
+    }
+    //默认是全部储存
+  }
+})],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
