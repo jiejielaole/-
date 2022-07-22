@@ -791,11 +791,19 @@ plugins: [createPersistedState({
 })],
 
 
+git命令
 
+git add .
+git commit -m '提交内容注释'
+git reset --hard 版本id  // 版本回退
+git pull orgin master
+git push origin master
 
+git branch -a // 查看所有分支
+git checkout -b 新分支  // 创建新分支并进入新分支 -b表示切换分支
+再主分支上 git merge 新分支  // 合并新分支修改的内容
 
-
-
+git branch -d 新分支 //删除本地新分支
 
 
 
