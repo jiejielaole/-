@@ -793,6 +793,7 @@ plugins: [createPersistedState({
 
 git命令
 
+git remote add origin git地址 //本地仓库和远程仓库建立连接。
 git add .
 git commit -m '提交内容注释'
 git reset --hard 版本id  // 版本回退
